@@ -1,0 +1,27 @@
+import pandas as pd
+from urllib.request import urlretrieve
+
+# Download the iris dataset from UCI Machine Learning Repository
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+filename = "iris.data"
+urlretrieve(url, filename)
+
+# Load the iris dataset into a Pandas DataFrame
+df = pd.read_csv(filename, names=["sepal length", "sepal width", "petal length", "petal width", "class"])
+
+# Print the first 10 records
+print("First 10 Records:")
+print(df.head(10))
+
+# Find the length of the dataset and print the number of rows and columns
+print("\nTotal Number of Rows and Columns in the dataset:")
+print("Rows:", df.shape[0])
+print("Columns:", df.shape[1])
+
+# Extract the column names from the dataset and print them
+print("\nColumn Names:")
+print(df.columns)
+
+# Find the mean of all the numerical attributes
+print("\nMean of all attributes:")
+print(df[["sepal length", "sepal width", "petal length", "petal width"]].mean())
